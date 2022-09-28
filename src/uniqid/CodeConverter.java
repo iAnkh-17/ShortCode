@@ -8,11 +8,15 @@ package uniqid;
  */
 public class CodeConverter {
 
-    // 0~9 + 字母大小写 + #*，不重复，且够64位
+    /**
+     * 0~9 + 字母大小写 + #*，不重复
+      */
     private static final char[] CODE_CHAR = "5W6X7Y8Z9efghijklmnopqrstuvwxyz0a1b2c3d4#ABCDEFGHI*JKLMNOPQRSTUV".toCharArray();
 
     private static final int BASE = CODE_CHAR.length;
-    // 2的幂,影响生成的code位数
+    /**
+     * 移动位数
+     */
     private static final int SHIFTBITS = 6;
 
     public static String convert(long number) {

@@ -5,13 +5,13 @@ import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * @author ankh
- * @Description 当前实现并未使用数据中心id
+ * @Description 基于snowFlake实现
  * @createTime 2022/9/26 16:37
  */
 public class IdGenerator {
 
     /**
-     * 时间起始标记点，作为基准，一般取系统的最近时间（一旦确定不能变动）
+     * 起始时间
      */
     private final long twepoch = 1664181720586L;
     /**
@@ -74,6 +74,7 @@ public class IdGenerator {
      * @return
      */
     public synchronized long nextId() {
+        //TODO 待优化
         long timestamp = System.currentTimeMillis();
         if (timestamp < lastTimestamp) {
             long offset = lastTimestamp - timestamp;
